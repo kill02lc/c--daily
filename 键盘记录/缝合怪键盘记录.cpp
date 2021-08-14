@@ -47,17 +47,6 @@ void Write(std::string data) {
 	}
 }
 
-void LogTime() {
-	time_t now = time(NULL);
-	struct tm time = { };
-	char buffer[48] = "";
-	if (now == -1 || localtime_s(&time, &now) != 0 || strftime(buffer, sizeof(buffer), "%H:%M:%S %Y-%d-%m", &time) == 0) {
-		Write("<time>N/A</time>");
-	}
-	else {
-		Write(std::string("<time>").append(buffer).append("</time>"));
-	}
-}
 
 void Hide(std::string file) {
 	DWORD attr = GetFileAttributesA(file.c_str());
